@@ -10,6 +10,8 @@ ip de trutlebot: 192.168.43.126
 
 ip de pcRemote:  192.168.43.154
 
+ip de 3B+ nico: 192.168.43.234
+
 nombre de red : habitacion97
 
 constraseña : contrasena
