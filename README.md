@@ -68,12 +68,20 @@ roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 ```
 
 Los comando que sí permiten el uso del Lidar son:
-(el burger)
+(en burger) se deben iniciar dos ventanas de comandos, desde remote pc, dos conexiones ssh
 ```bash
 roslaunch turtlebot3_bringup turtlebot3_core.launch
 roslaunch turtlebot3_bringup turtlebot3_lidar.launch
-roslaunch turtlebot3_bringup turtlebot3_rpicamera.launch
 ```
+
+# Conexión con matlab
+
+[*source*](https://la.mathworks.com/help/ros/ug/get-started-with-a-real-turtlebot.html)
+
+para este método se debe configurar las dos opciones de ip en la turtlebot como su propia ip
+
+
+
 
 # Issues
 
@@ -97,7 +105,34 @@ sudo nmcli networking on
 
 `sudo chown -R <username>:<username> /usr/local/MATLAB/R***`
 
+## instalamos mal una versión de ROS o hay un problema con la versión
+
+Para desinstalar todo:
+```bash
+sudo apt-get purge ros-*
+sudo apt-get autoremove
+```
+
+## Problemas al instalar ROS en WSL
+
+```bash
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+sudo apt install curl # if you haven't already installed curl
+curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+sudo apt update
+```
+Luego se sigue con instalación normal **NOETIC**
+
+# Tips
+
+- Si deseas saber la versión de tu ubuntu: `lsb_release -a`
+
 # Fuentes de información
 
-
 - [Quick start guide TurtleBot3](https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/#pc-setup)
+- [Ubuntu install of ROS Noetic](http://wiki.ros.org/noetic/Installation/Ubuntu)
+- [Get Started with a Real TurtleBot](https://la.mathworks.com/help/ros/ug/get-started-with-a-real-turtlebot.html)
+- [Communicate with the TurtleBot](https://la.mathworks.com/help/ros/ug/communicate-with-the-turtlebot.html)
+- [Explore Basic Behavior of the TurtleBot](https://la.mathworks.com/help/ros/ug/explore-basic-behavior-of-the-turtlebot.html)
+- [Control the TurtleBot with Teleoperation](https://la.mathworks.com/help/ros/ug/control-the-turtlebot-with-teleoperation.html)
+- [Obstacle Avoidance with TurtleBot and VFH](https://la.mathworks.com/help/ros/ug/obstacle-avoidance-with-turtlebot-and-vfh.html)
