@@ -78,10 +78,15 @@ roslaunch turtlebot3_bringup turtlebot3_lidar.launch
 
 [*source*](https://la.mathworks.com/help/ros/ug/get-started-with-a-real-turtlebot.html)
 
+Accedemos por ssh y ejecutamos en el turtlebot:
+```bash
+roslaunch turtlebot3_bringup turtlebot3_core.launch
+roslaunch turtlebot3_bringup turtlebot3_lidar.launch
+```
+
 para este método se debe configurar las dos opciones de ip en la turtlebot como su propia ip
 
-
-
+Las toolbox de ROS y de support turtlebot deben ser instaladas
 
 # Issues
 
@@ -111,9 +116,14 @@ Para desinstalar todo:
 ```bash
 sudo apt-get purge ros-*
 sudo apt-get autoremove
+
+sudo nano ~/.bashrc
 ```
+Se borra todo registro de ROS
 
 ## Problemas al instalar ROS en WSL
+
+Luego de desinstalar ROS:
 
 ```bash
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
@@ -121,7 +131,12 @@ sudo apt install curl # if you haven't already installed curl
 curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
 sudo apt update
 ```
+
+Luego, desintalar conda, si se ha instalado
+
 Luego se sigue con instalación normal **NOETIC**
+
+> No he podido instalar esta distribución en mi pc
 
 # Tips
 
@@ -136,3 +151,5 @@ Luego se sigue con instalación normal **NOETIC**
 - [Explore Basic Behavior of the TurtleBot](https://la.mathworks.com/help/ros/ug/explore-basic-behavior-of-the-turtlebot.html)
 - [Control the TurtleBot with Teleoperation](https://la.mathworks.com/help/ros/ug/control-the-turtlebot-with-teleoperation.html)
 - [Obstacle Avoidance with TurtleBot and VFH](https://la.mathworks.com/help/ros/ug/obstacle-avoidance-with-turtlebot-and-vfh.html)
+- [Uninstalling Anaconda Distribution](https://docs.anaconda.com/anaconda/install/uninstall/)
+- [ROS Toolbox Support Package for TurtleBot-Based Robots](https://la.mathworks.com/help/supportpkg/turtlebotrobot/index.html)
