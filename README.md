@@ -80,6 +80,7 @@ roslaunch turtlebot3_bringup turtlebot3_lidar.launch
 
 Accedemos por ssh y ejecutamos en el turtlebot:
 ```bash
+    export TURTLEBOT3_MODEL=burger
 roslaunch turtlebot3_bringup turtlebot3_core.launch
 roslaunch turtlebot3_bringup turtlebot3_lidar.launch
 ```
@@ -87,6 +88,21 @@ roslaunch turtlebot3_bringup turtlebot3_lidar.launch
 para este método se debe configurar las dos opciones de ip en la turtlebot como su propia ip
 
 Las toolbox de ROS y de support turtlebot deben ser instaladas
+
+
+en MATLAB
+```matlab
+ipaddress = '192.168.43.126'
+tbot = turtlebot(ipaddress,11311); %192.168.43.126
+tbot.Velocity.TopicName = '/cmd_vel';
+setVelocity(tbot,0.25,0,'Time',0.1)
+```
+
+para desconectar:
+```matlab
+clear %elimina todas las variables
+rosshutdown
+```
 
 # Issues
 
@@ -153,3 +169,4 @@ Luego se sigue con instalación normal **NOETIC**
 - [Obstacle Avoidance with TurtleBot and VFH](https://la.mathworks.com/help/ros/ug/obstacle-avoidance-with-turtlebot-and-vfh.html)
 - [Uninstalling Anaconda Distribution](https://docs.anaconda.com/anaconda/install/uninstall/)
 - [ROS Toolbox Support Package for TurtleBot-Based Robots](https://la.mathworks.com/help/supportpkg/turtlebotrobot/index.html)
+- [Create a UI for TurtleBot](https://la.mathworks.com/help/supportpkg/turtlebotrobot/ug/create-a-ui-for-turtlebot.html)
