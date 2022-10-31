@@ -78,21 +78,25 @@ roslaunch turtlebot3_bringup turtlebot3_lidar.launch
 
 [*source*](https://la.mathworks.com/help/ros/ug/get-started-with-a-real-turtlebot.html)
 
+Para este método se debe configurar las dos opciones de ip en la turtlebot como su propia ip:
+
+en el archivo '~/.bashrc'
+
+ROS_MASTER_URI=http://IP_OF_TURTLEBOT:11311
+ROS_HOSTNAME=IP_OF_TURTLEBOT
+
 Accedemos por ssh y ejecutamos en el turtlebot:
 ```bash
-    export TURTLEBOT3_MODEL=burger
+export TURTLEBOT3_MODEL=burger
 roslaunch turtlebot3_bringup turtlebot3_core.launch
 roslaunch turtlebot3_bringup turtlebot3_lidar.launch
 ```
 
-para este método se debe configurar las dos opciones de ip en la turtlebot como su propia ip
-
 Las toolbox de ROS y de support turtlebot deben ser instaladas
-
 
 en MATLAB
 ```matlab
-ipaddress = '192.168.43.126'
+ipaddress = 'IP_OF_TURTLEBOT'
 tbot = turtlebot(ipaddress,11311); %192.168.43.126
 tbot.Velocity.TopicName = '/cmd_vel';
 setVelocity(tbot,0.25,0,'Time',0.1)
