@@ -8,8 +8,10 @@ En el pc se debe instalar ROS NOETIC, todos los pasos están en el primer link d
 
 ### Trabajo en laboratorio
 
+En red cel de nico:
 
-ip de trutlebot: 192.168.43.126
+ip de trutlebot:
+ipaddress = '192.168.43.126'
 
 ip de pcRemote:  192.168.43.154
 
@@ -104,7 +106,7 @@ setVelocity(tbot,0.25,0,'Time',0.1)
 
 para desconectar:
 ```matlab
-clear %elimina todas las variables
+clear tbot %elimina todas las variables
 rosshutdown
 ```
 
