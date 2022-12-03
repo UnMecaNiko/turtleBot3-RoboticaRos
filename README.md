@@ -64,7 +64,7 @@ export TURTLEBOT3_MODEL=burger
 roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 ```
 Luego, para operar el robot con el teclado
-```bash
+```bash 
 export TURTLEBOT3_MODEL=burger
 roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
 ```
@@ -108,6 +108,69 @@ para desconectar:
 ```matlab
 clear tbot %elimina todas las variables
 rosshutdown
+```
+
+#Tuturial de uso paso a paso
+
+Al momento de hacer uso del robot por pirmera vez se tiene que seguir los siguientes pasos para configurar la red a la cual elo robot se va a conectar
+
+1. Conectar el robot via hdmi a una pantalla para realizar la configuracion inicial
+2. Ingresar al robot
+    Usuario: ubuntu
+    Contraseña: turtlebot
+3. ingresar al archivo bash con el siguiente comando
+    sudo nano /etc/netplan/50-cloud-init.yaml
+4. colocar el nombre de la red y la contraseña como se ve en la imagen
+
+//falta colocar la imagen
+
+5. salir del archivo y guardar los cambios hechos
+
+En siguiente lugar para comenzar a hacer uso del robot se puede hacer la conexion desde otro dispositivo (computador) conectado a la misma red que el robot a traves del comando ejecutado desde un cmd o un powershell
+
+```bash
+ssh ubuntu@192.168.__.___
+```
+donde la direccion ip que esta colocada luego del simbolo @ es la ip de la red
+
+Con esto se ingresara usuario y contraseña del robot y se tendra acceso al robot
+
+Y para finalizar la configuracion del robot y tener uso de ete via matlab se accedera al archvio bas con el siguiente comando:
+
+```bash
+sudo nano ~/.bashrc
+```
+
+donde en las ultimas lineas del archivo se encontrara dos direcciones ip las cuales se les colocara la misma direccion ip de la red a la que esta conectado el robot, se saldra del archivo guardando los cambios y se ejecutara el siguiente comando para que active los cambios de las direcciones ip.
+
+```bash
+source ~/.bashrc
+```
+
+Finalmente para ya activar el funcionamiento del robot se colocaran los siguientes dos comandos:
+
+```bash
+export TURTLEBOT3_MODEL=burger
+roslaunch turtlebot3_bringup turtlebot3_core.launch
+```
+
+Y con esto se termina la configuracion del robot para uso a traves de matlab.
+
+#Modo de uso a traves de matlab
+
+Inicialmente es importante tener las librerias correspndientes a ros y al turtulebot en si las cuales se encuentran en el Add-Ons de matlab 
+
+En siguiente lugar se creara un objeto de tipo turtlebot con la siguiente funcion y se le activara asi mismo el movimiento con las siguientes lineas de codigo.
+
+```bash
+tbot = turtlebot(ipaddress)
+tbot.Velocity.TopicName = '/cmd_vel';
+```
+
+y ya con esto creado solo queda movier el robot con la siguiente linea de codigo de forma que se le dara la velocidad lineal, angular y tiempo del movimiento
+
+```bash
+setVelocity(tbot, VelocidadLineal, VelocidadAngular, 'Time', Tiempo);
 ```
 
 # Issues
